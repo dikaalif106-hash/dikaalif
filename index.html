@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dika Alif | Personal Website</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      color:white;
+      overflow-x:hidden;
+      background:#000;
+    }
+
+    /* ===== BACKGROUND OASIS ===== */
+
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+
+      background:
+      linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2070&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+      z-index:-2;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:linear-gradient(135deg,rgba(255,196,0,0.08),rgba(0,0,0,0.6));
+      z-index:-1;
+    }
+
+    /* ===== NAVBAR ===== */
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:18px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
+
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      z-index:999;
+    }
+
+    nav h1{
+      color:#ffd34d;
+      font-size:28px;
+      letter-spacing:2px;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:20px;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      padding:10px 18px;
+      border-radius:10px;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active{
+      background:#ffd34d;
+      color:black;
+    }
+
+    /* ===== SECTION ===== */
+
+    section{
+      min-height:100vh;
+      padding:130px 10%;
+      display:none;
+      animation:fade 0.5s ease;
+    }
+
+    section.active{
+      display:flex;
+    }
+
+    @keyframes fade{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* ===== HOME ===== */
+
+    #home{
+      align-items:center;
+      justify-content:space-between;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    .home-text{
+      flex:1;
+      min-width:300px;
+    }
+
+    .home-text h2{
+      font-size:65px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .home-text h2 span{
+      color:#ffd34d;
+    }
+
+    .home-text p{
+      color:#ddd;
+      font-size:18px;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:15px 35px;
+      background:#ffd34d;
+      color:black;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 0 25px rgba(255,211,77,0.5);
+    }
+
+    .album-box{
+      width:320px;
+      height:320px;
+      border-radius:25px;
+      overflow:hidden;
+      border:3px solid rgba(255,255,255,0.2);
+      box-shadow:0 0 40px rgba(255,211,77,0.2);
+    }
+
+    .album-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* ===== GENERAL ===== */
+
+    .title{
+      font-size:48px;
+      margin-bottom:25px;
+      color:#ffd34d;
+    }
+
+    .glass{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(12px);
+      border-radius:25px;
+      padding:35px;
+      line-height:1.9;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    /* ===== ABOUT ===== */
+
+    #about{
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:15px;
+      margin-top:25px;
+    }
+
+    .skill{
+      background:#ffd34d;
+      color:black;
+      padding:10px 20px;
+      border-radius:30px;
+      font-weight:600;
+    }
+
+    /* ===== ACTIVITIES ===== */
+
+    #activities{
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      margin-top:30px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:30px;
+      border-radius:20px;
+      transition:0.3s;
+      backdrop-filter:blur(10px);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 25px rgba(255,211,77,0.2);
+    }
+
+    .card h3{
+      color:#ffd34d;
+      margin-bottom:15px;
+    }
+
+    .card p{
+      color:#ddd;
+      line-height:1.8;
+    }
+
+    /* ===== CONTACT ===== */
+
+    #contact{
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+    }
+
+    .contact-box{
+      width:100%;
+      max-width:600px;
+    }
+
+    .contact-box p{
+      margin:18px 0;
+      font-size:18px;
+    }
+
+    .contact-box a{
+      color:#ffd34d;
+      text-decoration:none;
+    }
+
+    /* ===== FOOTER ===== */
+
+    footer{
+      text-align:center;
+      padding:25px;
+      color:#aaa;
+      border-top:1px solid rgba(255,255,255,0.1);
+      background:rgba(0,0,0,0.3);
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .home-text h2{
+        font-size:42px;
+      }
+
+      section{
+        padding:150px 7%;
+      }
+
+      .album-box{
+        width:260px;
+        height:260px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+
+  <nav>
+
+    <h1>OASIS</h1>
+
+    <ul>
+      <li><a href="#" class="nav-link active" data-target="home">Home</a></li>
+      <li><a href="#" class="nav-link" data-target="about">About</a></li>
+      <li><a href="#" class="nav-link" data-target="activities">Activities</a></li>
+      <li><a href="#" class="nav-link" data-target="contact">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- ===== HOME ===== -->
+
+  <section id="home" class="active">
+
+    <div class="home-text">
+
+      <h2>
+        Dika <span>Alif</span>
+      </h2>
+
+      <p>
+       
+        Saya adalah siswa SMK Sandikta jurusan TKJ
+        yang mempelajari dunia server, Linux,
+        networking, dan teknologi web.
+      </p>
+
+      <a href="#" class="btn nav-link" data-target="about">
+        Explore More
+      </a>
+
+    </div>
+
+    <div class="album-box">
+
+      <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1974&auto=format&fit=crop">
+
+    </div>
+
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+
+  <section id="about">
+
+    <div>
+
+      <h2 class="title">About Me</h2>
+
+      <div class="glass">
+
+        <p>
+          Halo, saya <b>Dika Alif</b> dari
+          <b>SMK Sandikta</b> jurusan
+          <b>Teknik Komputer dan Jaringan (TKJ)</b>.
+        </p>
+
+        <br>
+
+        <p>
+          Saya memiliki minat dalam bidang server,
+          Linux Debian, networking, dan web technology.
+          Saya suka mempelajari konfigurasi server
+          serta pengelolaan jaringan komputer.
+        </p>
+
+        <div class="skills">
+
+          <div class="skill">DNS Server</div>
+          <div class="skill">Web Server</div>
+          <div class="skill">SSH Server</div>
+          <div class="skill">Mikrotik Dasar</div>
+          <div class="skill">Cisco Dasar</div>
+          <div class="skill">Debian Linux</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ===== ACTIVITIES ===== -->
+
+  <section id="activities">
+
+    <div>
+
+      <h2 class="title">Activities</h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>DNS Server</h3>
+          <p>
+            Belajar membuat DNS Server di Debian menggunakan Bind9
+            untuk menghubungkan domain dan IP Address.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Web Server</h3>
+          <p>
+            Membuat dan mengkonfigurasi Apache2 di Debian
+            untuk menjalankan website server.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>SSH Server</h3>
+          <p>
+            Mengatur remote access server menggunakan SSH
+            agar server dapat diakses dengan aman.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>WordPress</h3>
+          <p>
+            Belajar instalasi WordPress di Debian menggunakan
+            Apache, PHP, dan MariaDB.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+
+  <section id="contact">
+
+    <div class="contact-box glass">
+
+      <h2 class="title">Contact</h2>
+
+      <p>
+        📧 Email :
+        <a href="mailto:dikaalif106@gmail.com">
+          dikaalif106@gmail.com
+        </a>
+      </p>
+
+      <p>
+        📸 Instagram :
+        <a href="https://instagram.com/axdikaal" target="_blank">
+          @axdikaal
+        </a>
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+
+  <footer>
+    © 2026 Dika Alif — Personal Website
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+
+  <script>
+
+    const links = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("section");
+
+    links.forEach(link => {
+
+      link.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        const target = this.getAttribute("data-target");
+
+        sections.forEach(section=>{
+          section.classList.remove("active");
+        });
+
+        links.forEach(nav=>{
+          nav.classList.remove("active");
+        });
+
+        document.getElementById(target).classList.add("active");
+
+        links.forEach(nav=>{
+
+          if(nav.getAttribute("data-target") === target){
+            nav.classList.add("active");
+          }
+
+        });
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
